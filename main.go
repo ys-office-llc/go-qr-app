@@ -1,12 +1,16 @@
 package main
 
 import (
-	"flag"
 	"fmt"
+	"os"
 )
 
 func main() {
-	flag.Parse()
-	arg := flag.Arg(0)
-	fmt.Printf("Hello %s\n", arg)
+	_, err := os.Create("./hello.txt")
+	if err != nil {
+		fmt.Printf("failed to create file \n: %v", err)
+		return
+	}
+
+	fmt.Println("Done!")
 }
